@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML 5/CSS 3 form</title>
+  <link rel="stylesheet" media="screen" href="css/styles.css">
+</head>
+
+<body>
+  <form class="contact_form" action="" method="post" name="contact_form">
+    <ul>
+      <li>
+        <h2>Contact Us</h2>
+        <span class="required_notification">* Denotes Required Field</span>
+      </li>
+      <li>
+        <label for="name">Name:</label>
+        <!-- Any number of names (at least two), with at least two letters in each -->
+        <input pattern="(\w{2,})( \w{2,})+" title="At least first name and last name, no initials" type="text" name="name" id="name" placeholder="Ola Nordmann" required/>
+      </li>
+      <li>
+        <label for="email">Email:</label>
+        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="email" id="email" placeholder="ola@nordmann.no" required/>
+        <span class="form_hint">Proper format "name@something.com"</span>
+      </li>
+      <li>
+        <label for="website">Website:</label>
+        <input pattern="(https?://)([a-zA-Z0-9]([a-zA-ZæøåÆØÅ0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$" type="url" name="website" id="website" placeholder="http://www.normann.no/ola" required/>
+        <span class="form_hint">Proper format "http://someaddress.com"</span>
+      </li>
+      <li>
+        <label for="bdate">Birthdate:</label>
+        <input type="date" name="bdate" id="bdate" required>
+      </li>
+      <li>
+        <label for="message">Message:</label>
+        <textarea minlength="20" maxlength="1024" title="Type between 20 and 1024 characters" name="message" cols="40" rows="6" id="message" required></textarea>
+      </li>
+      <li>
+        <button class="submit" type="submit">Submit Form</button>
+      </li>
+    </ul>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% if feedback %}
+    <p class="text-danger float-right">{{ feedback }}</p>
+    {% endif %}
+    <h1>{{ the_title }}</h1>
+    <form action='/lunch' method="post">
+        Your Name:
+        <input type="text" name="name"><br>
+        Cost of a Lunch:
+        <input type="text" name="cost"><br>
+        Days Buying Lunch:
+        <input type="number" name="days"><br>
+        <input type="submit" value="Calculate">
+    </form>
+    {% if name %}
+            <p>{{ name }} will have lunchcost: {{'%0.2f'| format(lunchCost|float)}}</p>
+    {% endif %}
+{% endblock %}

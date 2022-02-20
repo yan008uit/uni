@@ -1,0 +1,74 @@
+/* Format the form */
+
+.contact_form ul {
+  width: 750px;
+  list-style-type: none;
+  list-style-position: outside;
+  margin: 0px;
+  padding: 0px;
+}
+
+.contact_form li {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.contact_form li:first-child, .contact_form li:last-child {
+  /* Add border above and below the form */
+  border-bottom: 1px solid #777;
+}
+
+.contact_form h2 {
+  /* Format heading */
+  margin: 0;
+  display: inline;
+}
+
+.required_notification {
+  /* Place required_notification to the right */
+  color: #d45252;
+  margin: 5px 0 0 0;
+  display: inline;
+  float: right;
+}
+
+
+/* ------------------------ Existing code below ------------ */
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: blue;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: blue;
+}
+
+:-ms-input-placeholder {
+  /* IE 10+ */
+  color: blue;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: blue;
+}
+
+*:focus {
+  /* Remove outline on all focused elements */
+  outline: none;
+}
+
+body {
+  font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+.contact_form h2, .contact_form label {
+  font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.form_hint, .required_notification {
+  font-size: 11px;
+}

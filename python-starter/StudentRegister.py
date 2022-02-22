@@ -27,7 +27,7 @@ class StudReg:
 
     def visAlle(self):
         try:
-            self.cursor.execute("SELECT * FROM student_v21 ORDER BY lastName ASC")
+            self.cursor.execute("SELECT * FROM student ORDER BY lastName ASC")
             result = self.cursor.fetchall()
         except mysql.connector.Error as err:
                 print(err)
@@ -35,7 +35,7 @@ class StudReg:
 
     def visStudent(self, id):
         try:
-            self.cursor.execute("SELECT * FROM student_v21 WHERE  id=(%s)", (id,))
+            self.cursor.execute("SELECT * FROM student WHERE  id=(%s)", (id,))
             result = self.cursor.fetchone()
         except mysql.connector.Error as err:
                 print(err)

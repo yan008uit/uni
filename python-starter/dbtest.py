@@ -14,7 +14,7 @@ app = Flask(__name__)
 def hello() -> 'html':
     conn = mysql.connector.connect(**dbconfig)
     cursor = conn.cursor()
-    _SQL = """SELECT id, givenName, lastName, email, studyProgram FROM student_v21""";
+    _SQL = """SELECT id, givenName, lastName, email, studyProgram FROM student""";
     cursor.execute(_SQL)
     result = cursor.fetchall()
     return render_template('students.html',

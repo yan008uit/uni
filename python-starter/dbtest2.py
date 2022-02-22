@@ -12,7 +12,7 @@ app = Flask(__name__)
 def hello() -> 'html':
 
     with MyDb() as db:
-        _SQL = """SELECT id, givenName, lastName, email, studyProgram FROM student_v21""";
+        _SQL = """SELECT id, givenName, lastName, email, studyProgram FROM student""";
         result = db.query(_SQL)
     return render_template('students.html',
                            students= result)

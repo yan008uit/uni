@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+    {%if students %}
+        <h1>Studentoversikt</h1>
+        <table>
+            <thead>
+                <th>Fornavn</th>
+                <th>Etternavn</th>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.givenName }}</td>
+                    <td><a href="?id={{ student.id  }}">{{student.lastName  }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        {{ msg }}
+    {% endif %}
+{% endblock %}

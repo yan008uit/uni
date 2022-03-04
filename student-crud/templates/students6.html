@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% if student %}
+        <h3>Confirm delete student {{ student.givenName }} {{ student.lastName }}</h3>
+        <form method="post" action="/delete">
+ 			<p><button type="submit" class="btn btn-primary">Delete</button></p>
+            <input type="hidden" name="id" value="{{ student.id }}" />
+		</form>
+    {% endif %}
+        <script>
+            document.write('<a href="' + document.referrer + '">Back</a>');
+        </script>
+{% endblock %}

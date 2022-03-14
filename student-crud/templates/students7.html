@@ -3,7 +3,7 @@
 {% block body %}
     <div class = "container">
         <h2>Update student</h2>
-        <form action="/update" method="post">
+        <form action="{{url_for('update')}}" method="post">
             <div>
                 {{ form.givenName.label }}<br>
                 {{ form.givenName(size=32) }}<br>

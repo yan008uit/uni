@@ -1,0 +1,22 @@
+body{
+    font-family: Arial, sans-serif;
+    font-size: 1.2em;
+    margin: 10em;
+}
+input {
+    display:block;
+}
+label {
+    display:block;
+}
+textarea {
+  width: 400px;
+  height: 100px;
+}
+.table {
+    border-color: blueviolet;
+}
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+}

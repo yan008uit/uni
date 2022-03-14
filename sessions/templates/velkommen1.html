@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>{{ the_title }}</h1>
+    {% if session['logged_in'] %}
+        <h1>Hi, {{ session['username']}}!</h1>
+    {% else %}
+        <h1>Hi, stranger!</h1>
+    {% endif %}
+{% endblock %}

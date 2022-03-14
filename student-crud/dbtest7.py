@@ -1,7 +1,7 @@
 
 #Install all requirements: pip install -r requirements.txt
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from StudentRegister import StudReg
 from student import Student
 from StudentForm import StudentForm
@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
 
-def hello() -> 'html':
+def index() -> 'html':
     id = request.args.get('id')
     if not id:
         with StudReg() as db:
@@ -37,7 +37,7 @@ def hello() -> 'html':
 
 @app.route('/update', methods=["GET", "POST"])
 
-def hello2() -> 'html':
+def update() -> 'html':
     form = StudentForm(request.form)
     if request.method == "POST" and form.validate():
 
@@ -49,7 +49,7 @@ def hello2() -> 'html':
         student = (givenName, lastName, email, studyProgram,id)
         with StudReg() as db:
             result = db.updateStudent(student)
-        return redirect('/')
+        return redirect(url_for('index'))
     else:
         return render_template('students7.html',
                                form=form)
@@ -81,7 +81,7 @@ def delete() -> 'html':
         id = request.form['id']
         with StudReg() as db:
             result = db.deleteStudent(id)
-        return redirect('/')
+        return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)

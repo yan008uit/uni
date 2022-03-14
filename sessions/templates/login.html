@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% if session['logged_in'] %}
+        <h1>Intern side beskyttet av innlogging</h1>
+        <p>
+          Du er logget inn som {{session['username']}}
+        </p>
+        <form action="/logout" method="post">
+          <input type="submit" name="logout" value="Logout">
+        </form>
+    {% else %}
+        <h3>Du må logge inn</h3>
+        <form action="/login" method="post">
+          <table>
+            <tr><td>Brukernavn: </td>
+              <td><input type="text" name="username"></td></tr>
+            <tr><td>Passord: </td>
+              <td><input type="password" name="password" size="5"></td></tr>
+            <tr><td colspan="2"><input type="submit" name="login" value="Login"></td>
+            </tr>
+          </table>
+        </form>
+    {% endif %}
+{% endblock %}

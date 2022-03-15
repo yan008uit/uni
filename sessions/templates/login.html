@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {% block body %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flashes">
+            {% for message in messages %}
+                <!-- Do something with the message -->
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
     {% if session['logged_in'] %}
         <h1>Intern side beskyttet av innlogging</h1>
         <p>

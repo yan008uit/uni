@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 
-def hello() -> 'html':
+def index() -> 'html':
     id = request.args.get('id')
     if not id:
         with StudReg() as db:
@@ -26,7 +26,7 @@ def hello() -> 'html':
 
 @app.route('/update', methods=["GET", "POST"])
 
-def hello2() -> 'html':
+def update() -> 'html':
     if request.method == "POST":
         req = request.form
 
@@ -56,7 +56,7 @@ def deleteConfirm() -> 'html':
             else:
                 student = Student(*stud)
                 return render_template('students6.html',
-                              student=stud, deleteConfirmation=True)
+                              student=student, deleteConfirmation=True)
 
 @app.route('/delete', methods=["GET", "POST"])
 

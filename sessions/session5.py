@@ -3,7 +3,7 @@
 
 from flask import Flask, render_template, request, redirect, session, url_for
 import secrets
-from flask_login import LoginManager, current_user, login_user
+from flask_login import LoginManager, current_user, login_user, logout_user
 from user import User
 from UserRegister import UserReg
 from flask_login import login_required
@@ -59,8 +59,8 @@ def hello2() -> 'html':
 @app.route('/logout', methods=["GET", "POST"])
 @login_required
 def logout():
-    # session.pop('logged_in')
-    logout()
+    logout_user()
+    session.pop('logged_in')
     return redirect('/')
 
 

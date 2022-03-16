@@ -27,7 +27,7 @@ def index() -> 'html':
             else:
                 student = Student(*stud)
                 form = StudentForm()
-                form.id=id
+                form.id.data = id
                 form.lastName.data = student.lastName
                 form.givenName.data = student.givenName
                 form.email.data = student.email

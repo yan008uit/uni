@@ -32,7 +32,7 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </div>
-            <input type="hidden" name="id" value="{{ form.id }}" />
+            {{ form.id }}
             <p>{{ form.submit() }}</p>
         </form>
     </div>

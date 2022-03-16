@@ -3,8 +3,6 @@
 #Kommando i terminalvindu: pip install mysql-connector-python
 
 from flask import Flask, render_template, request, redirect, session
-from StudentRegister import StudReg
-from student import Student
 import secrets
 
 app = Flask(__name__)

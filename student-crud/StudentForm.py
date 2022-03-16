@@ -2,8 +2,7 @@
 
 from wtforms import Form, BooleanField,StringField, SubmitField, validators
 from wtforms.validators import DataRequired, Email, Length
-from wtforms.fields.html5 import EmailField
-from wtforms.fields import TextAreaField, HiddenField
+from wtforms.fields import TextAreaField, HiddenField, EmailField
 
 class StudentForm(Form):
     givenName = StringField('First name', validators=[DataRequired()])

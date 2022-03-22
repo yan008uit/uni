@@ -11,7 +11,7 @@ class User():
         self.passwordHash = passwordHash.replace("\'", "")
         self.firstname = firstname
         self.lastname = lastname
-        self.is_authenticated = False
+        self.is_authenticated = True
         self.is_active= True
         self.is_anonymous = False
 
@@ -55,3 +55,11 @@ class User():
     def is_anonymous(self):
         """False, as anonymous users aren't supported."""
         return False
+        
+    def get(self,id):
+        with UserReg() as db:
+            user = User(*db.getUserById(id))
+            if user:
+                return user
+            else:
+                return False

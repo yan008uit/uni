@@ -17,7 +17,7 @@ def hello() -> 'html':
 
 def hemmelig() -> 'html':
     if 'logged_in' in session:
-        return render_template('velkommen2.html', the_title='Beskyttet side')
+        return render_template('velkommen1.html', the_title='Beskyttet side')
     return render_template('login.html')
 
 @app.route('/login', methods=["GET", "POST"])

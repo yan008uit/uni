@@ -1,6 +1,7 @@
 # MySQL connector må være installert
 # Kommando i terminalvindu: pip install -r requirements.txt
 
+from site import venv
 from flask import Flask, render_template, request, redirect, session, url_for
 import secrets
 from flask_login import LoginManager, current_user, login_user, logout_user
@@ -16,27 +17,26 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    user_dict = session['user']
-    user = User(user_dict['id'], user_dict['passwordHash'], user_dict['firstname'], user_dict['lastname'], user_dict['username'])
-    user.is_authenticated = user_dict['is_authenticated']
+    with UserReg() as db:
+        user = User(*db.getUserById(user_id))
     return user
 
 
 @app.route('/hemmelig')
 @login_required
 def hemmelig() -> 'html':
-    return render_template('velkommen.html', the_title='Beskyttet side')
+    return render_template('velkommen2.html', the_title='Beskyttet side')
 
 
 @app.route('/')
 @app.route('/index')
 # @login_required
-def hello() -> 'html':
-    return render_template('login.html')
+def index() -> 'html':
+    return render_template('login1.html')
 
 
 @app.route('/login', methods=["GET", "POST"])
-def hello2() -> 'html':
+def login() -> 'html':
     if request.method == "POST":
 
         username = request.form['username']
@@ -45,23 +45,16 @@ def hello2() -> 'html':
             usr = db.getUser(username)
             if usr:
                 user = User(*usr)
-                if user.check_password(password):       
-                    user.is_authenticated = True
-                    login_user(user)
-                    session['user'] = user.__dict__
-                    session['logged_in'] = True
-                    session['username'] = username
-                    return redirect(url_for('hemmelig'))
-            else:
-                return redirect('/')
+                if user.check_password(password):
+                    login_user(user, remember=True)
+            return redirect(url_for('index'))
 
 
 @app.route('/logout', methods=["GET", "POST"])
 @login_required
 def logout():
     logout_user()
-    session.pop('logged_in')
-    return redirect('/')
+    return redirect(url_for('index'))
 
 
 app.secret_key = secrets.token_urlsafe(16)

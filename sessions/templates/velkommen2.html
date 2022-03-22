@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>{{ the_title }}</h1>
+    {% if current_user.is_authenticated %}
+    <h1>Intern side beskyttet av innlogging</h1>
+    <p>
+      Du er logget inn som {{ current_user.firstname }}
+    {% else %}
+        <h1>Hi, stranger! Du er ikke innlogget!</h1>
+    {% endif %}
+{% endblock %}

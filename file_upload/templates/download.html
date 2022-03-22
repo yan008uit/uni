@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h1>Download File</h1>
+     <div class="container" align="left">
+      <a href={{ url_for('return_files', filename=value, _external=True) }}><button class='btn btn-default'>Download</button></a>
+     </div>
+  {% endblock %}
